@@ -47,16 +47,13 @@
 </template>
 
 <script setup lang="ts">
-import useResource from '#ioc/composables/useResource'
+import useAsyncData from '#ioc/composables/useAsyncData'
 import Navigation from '#ioc/graphql/queries/Navigation'
 import fetchQuery from '#ioc/utils/fetchQuery'
 
 import { computed } from 'vue'
 
-const [data] = await useResource(
-  () => null,
-  () => fetchQuery(Navigation()),
-)
+const { data } = await useAsyncData('Navigation', () => fetchQuery(Navigation()))
 
 const categories = computed(() => data.value.categoryList[0].children)
 </script>

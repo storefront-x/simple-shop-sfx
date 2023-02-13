@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import ProductListing from '#ioc/components/ProductListing'
-import useResource from '#ioc/composables/useResource'
+import useAsyncData from '#ioc/composables/useAsyncData'
 import useRoute from '#ioc/composables/useRoute'
 import CategoryDetail from '#ioc/graphql/queries/CategoryDetail'
 import fetchQuery from '#ioc/utils/fetchQuery'
@@ -20,10 +20,7 @@ import { computed } from 'vue'
 
 const route = useRoute()
 
-const [data] = await useResource(
-  () => route.params.id,
-  (id) => fetchQuery(CategoryDetail().with({ id })),
-)
+const { data } = await useAsyncData('CategoryDetail', () => fetchQuery(CategoryDetail().with({ id: route.params.id })))
 
 const category = computed(() => data.value.categoryList[0])
 </script>
