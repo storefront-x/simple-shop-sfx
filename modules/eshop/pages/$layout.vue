@@ -1,11 +1,11 @@
 <template>
   <Header />
-  <SfxLayoutOutlet />
+  <SfxPageOutlet />
   <Footer />
 </template>
 
 <script setup lang="ts">
-import SfxLayoutOutlet from '#ioc/components/SfxLayoutOutlet'
+import SfxPageOutlet from '#ioc/components/SfxPageOutlet'
 import Header from '#ioc/components/Header'
 import Footer from '#ioc/components/Footer'
 </script>
