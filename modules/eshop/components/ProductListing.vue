@@ -18,6 +18,8 @@
 </template>
 
 <script setup lang="ts">
+import { PropType } from 'vue'
+
 defineProps({
   products: {
     type: Array as PropType<any[]>,
